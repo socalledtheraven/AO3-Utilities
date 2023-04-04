@@ -1,0 +1,28 @@
+{
+    "description": "fixes bookmark links to go to the last page instead, and adds a rekudos thing",
+    "manifest_version": 2,
+    "name": "Ao3 utils",
+    "version": "1.0.2",
+    "content_scripts": [
+		{
+	    	"js": ["subscribeMover.js"],
+	    	"matches": [
+	        	"*://archiveofourown.org/works/*"
+	    	]
+    	}, {
+			"js": ["bookmarks.js"],
+	    	"matches": [
+	        	"*://archiveofourown.org/bookmarks?commit=Sort+and+Filter&bookmark_search%5Bsort_column%5D=bookmarkable_date*"
+	    	]
+		}, {
+			"js": ["bookmarks.js"],
+			"matches": [
+				"*://archiveofourown.org/users/*/bookmarks*"
+			]
+		}
+	],
+	"browser_action": {
+		"default_popup": "popup.html",
+		"default_icon": "favicon.png"
+	}
+}

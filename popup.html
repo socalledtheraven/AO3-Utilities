@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		body {
+			background-color: #2a2a2a;
+			color: #fff;
+			font-family: sans-serif;
+		}
+
+		h1 {
+			background-color: #900;
+			color: #fff;
+			padding: 10px;
+			text-align: center;
+		}
+
+		.switch {
+			display: inline-block;
+			width: 60px;
+			height: 34px;
+			position: relative;
+			background-color: #ccc;
+			border-radius: 34px;
+			transition: background-color .3s ease;
+		}
+
+		input[type="checkbox"] {
+			opacity: 0;
+			width: 0;
+			height: 0;
+			position: absolute;
+		}
+
+		.slider {
+			position: absolute;
+			cursor: pointer;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-color: #fff;
+			border-radius: 50%;
+			transition: .3s;
+		}
+
+		.slider:before {
+			position: absolute;
+			content: "";
+			height: 26px;
+			width: 26px;
+			left: 4px;
+			bottom: 4px;
+			background-color: #2a2a2a;
+			transition: .3s;
+			border-radius: 50%;
+		}
+
+		input[type="checkbox"]:checked + .slider {
+			background-color: #900;
+		}
+
+		input[type="checkbox"]:checked + .slider:before {
+			transform: translateX(26px);
+		}
+
+		.switch label {
+			float: right;
+			margin-right: 10px;
+			margin-top: 8px;
+		}
+	</style>
+</head>
+<body>
+<h1>Ao3 Utils</h1>
+<div class="switch">
+	<input type="checkbox" id="switch1">
+	<label for="switch1">Module 1</label>
+	<span class="slider"></span>
+</div>
+<div class="switch">
+	<input type="checkbox" id="switch2">
+	<label for="switch2">Module 2</label>
+	<span class="slider"></span>
+</div>
+</body>
+</html>
