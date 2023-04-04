@@ -1,38 +1,20 @@
-async function get(url) {
-    let response = await fetch(url);
-    let html = await response.text();
-    return html;
-}
-
-function parseNavigation(html) {
-    let parser = new DOMParser();
-    console.log("got nav page, parsing");
-    let doc = parser.parseFromString(html, "text/html");
-
-    let chapters = doc.querySelector('ol[role="navigation"]').children;
-    let lastChapterURL = chapters[chapters.length-1];
-    lastChapterURL = lastChapterURL.querySelector("a").href.replace("https://archiveofourown.org", "");
-    return lastChapterURL;
-}
-
-async function main() {
+function main() {
     let bookmarks = document.querySelectorAll('[role="article"]');
-    let header;
+    let header = document.querySelector("div.header h4.heading");
     console.log("loaded");
     for (let bookmark of bookmarks) {
         console.log(bookmark);
-        header = bookmark.querySelector(".heading");
-        let href = header.querySelector("a").href;
-        if (href.includes("works")) {
-            href += "/navigate";
-            let html = await get(href);
-            let lastChapter = parseNavigation(html);
-            console.log(lastChapter);
-            header.querySelector("a").href = lastChapter;
+        let lastChapter = bookmark.querySelector("dd.chapters")
+        if (lastChapter !== null) {
+            if (lastChapter.querySelector("a")) {
+                let lastChapterURL = lastChapter.querySelector("a").href;
+                console.log(lastChapterURL);
+                header.querySelector("a").href = lastChapterURL;
+            }
+        } else {
+            console.log("no chapter message, probably series")
         }
     }
 }
 
-window.onload = async function() {
-    await main();
-};
+main();

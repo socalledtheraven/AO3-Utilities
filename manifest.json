@@ -5,20 +5,15 @@
     "version": "1.0.2",
     "content_scripts": [
 		{
-	    	"js": ["subscribeMover.js"],
+	    	"js": ["inWork.js"],
 	    	"matches": [
 	        	"*://archiveofourown.org/works/*"
 	    	]
     	}, {
 			"js": ["bookmarks.js"],
 	    	"matches": [
-	        	"*://archiveofourown.org/bookmarks?commit=Sort+and+Filter&bookmark_search%5Bsort_column%5D=bookmarkable_date*"
+				"*://archiveofourown.org/bookmarks*sort_column%5D=bookmarkable_date*"
 	    	]
-		}, {
-			"js": ["bookmarks.js"],
-			"matches": [
-				"*://archiveofourown.org/users/*/bookmarks*"
-			]
 		}
 	],
 	"browser_action": {
