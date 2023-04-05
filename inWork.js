@@ -2,23 +2,27 @@ function main() {
 	// Get the input and div elements
 	let inputElement = document.querySelector("#kudo_submit");
 	let messageElement = document.querySelector("#kudos_message");
+	let subscribeButton = document.querySelector('#new_subscription');
 
 	// Attach a click event to the input element
 	inputElement.addEventListener("click", function() {
+		if (subscribeButton) {
+			subscribeButton.click();
+			inputElement.scrollIntoView({behavior: "instant", block: "center"});
+		}
+		subscribeButton = null;
 		// Check the class of the div element after the click
 		if (messageElement.classList.length !== 1) {
 			setTimeout(function() {
 				if (messageElement.classList.contains("kudos_error")) {
 					console.log("previously kudosed");
-					sendComment();
+//					sendComment();
 				}
 			}, 500);
 		} 
 	});
 	
 	console.log("added event listener");
-
-	
 }
 
 // Define the sendComment function
@@ -36,6 +40,4 @@ function sendComment() {
 	console.log("sent comment");
 }
 
-window.onload = function() {
-	main();
-};
+main();

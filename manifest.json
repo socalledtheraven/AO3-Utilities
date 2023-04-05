@@ -7,7 +7,7 @@
 		{
 	    	"js": ["inWork.js"],
 	    	"matches": [
-	        	"*://archiveofourown.org/works/*"
+	        	"*://archiveofourown.org/works*"
 	    	]
     	}, {
 			"js": ["bookmarks.js"],
